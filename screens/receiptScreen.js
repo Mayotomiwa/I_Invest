@@ -67,7 +67,7 @@ export default function ReceiptScreen({route}) {
             )}
 
             <Text style={styles.titleFooter}>Your transfer will arrive to the recipient within 48 hours.</Text>
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity onPress={() => {navigation.navigate('home')}} style={styles.btn}>
                 <Text style={styles.status}>Done</Text>
             </TouchableOpacity>
         </SafeAreaView>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginTop: '10%',
         textAlign: 'center',
-        marginVertical: '10%',
+        marginTop: '10%',
         marginHorizontal: '10%',
     },
     icon: {

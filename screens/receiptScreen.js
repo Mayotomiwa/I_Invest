@@ -5,14 +5,13 @@ import { color } from '../constants/color';
 import Separator from '../constants/Seperator';
 import { fetchUser } from '../data/ApiData';
 
-export default function ReceiptScreen({route}) {
-    const [data, setData] = useState()
+export default function ReceiptScreen({ route, navigation }) {
+    const [setData] = useState()
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetchUser();
             setData(result[0]);
         };
-
         fetchData();
     }, []);
     const { receiptItems } = route.params;
@@ -67,8 +66,8 @@ export default function ReceiptScreen({route}) {
             )}
 
             <Text style={styles.titleFooter}>Your transfer will arrive to the recipient within 48 hours.</Text>
-            <TouchableOpacity onPress={() => {navigation.navigate('home')}} style={styles.btn}>
-                <Text style={styles.status}>Done</Text>
+            <TouchableOpacity onPress={() => { navigation.navigate('home') }} style={styles.btn2}>
+                <Text style={styles.status2}>Done</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
@@ -111,9 +110,8 @@ const styles = StyleSheet.create({
     titleFooter: {
         color: color.white,
         fontSize: 18,
-        marginTop: '10%',
         textAlign: 'center',
-        marginTop: '10%',
+        marginTop: '5%',
         marginHorizontal: '10%',
     },
     icon: {
@@ -157,6 +155,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: '20%',
     },
     status: {
+        fontSize: 24,
+        color: color.white,
+        textAlign: 'center'
+    },
+    status2: {
+        marginTop: '5%',
         fontSize: 24,
         color: color.white,
         textAlign: 'center'

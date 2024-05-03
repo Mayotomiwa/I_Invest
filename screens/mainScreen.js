@@ -7,7 +7,7 @@ import { color } from '../constants/color';
 import Separator from '../constants/Seperator';
 import { fetchUser } from '../data/ApiData';
 
-export default function MainScreen({navigation}) {
+export default function MainScreen({ navigation }) {
   const [data, setData] = useState()
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +22,9 @@ export default function MainScreen({navigation}) {
       <View style={styles.title}>
         <HStack>
           <Text style={styles.titleName}>Hi {data?.name}</Text>
-          <Image src={data?.userImage} />
+          <View style={styles.imageIcons}>
+            <Image style={styles.imageStyles} source={{uri: data?.userImage}} />
+          </View>
         </HStack>
         <Text style={styles.titleBalance}>${data?.balance.toLocaleString()}</Text>
         <Text style={styles.titleNaming}>Avaiable Balance</Text>
@@ -55,7 +57,7 @@ export default function MainScreen({navigation}) {
         <Text style={styles.activity}>Activity</Text>
         <View style={styles.iconsContainer}>
           <View style={styles.box}>
-            <TouchableOpacity onPress={() => {navigation.navigate('transfer')}} style={styles.icon}>
+            <TouchableOpacity onPress={() => { navigation.navigate('transfer') }} style={styles.icon}>
               <FontAwesome name='send' color={color.white} size={24} style={{ top: '30%', left: '30%' }} />
             </TouchableOpacity>
             <Text style={styles.label}>Transfer</Text>
@@ -67,7 +69,7 @@ export default function MainScreen({navigation}) {
             <Text style={styles.label}>My Card</Text>
           </View>
           <View style={styles.box}>
-            <TouchableOpacity onPress={() => {navigation.navigate('details')}} style={styles.icon}>
+            <TouchableOpacity onPress={() => { navigation.navigate('details') }} style={styles.icon}>
               <Entypo name='bar-graph' color={color.white} size={24} style={{ top: '30%', left: '30%' }} />
             </TouchableOpacity>
             <Text style={styles.label}>Insight</Text>
@@ -158,6 +160,14 @@ const styles = StyleSheet.create({
     color: color.offWhite,
     fontSize: 15,
     marginTop: '2%',
+  },
+  imageStyles: {
+    width: 80,
+    height: 80,
+  },
+  imageIcons: {
+    paddingHorizontal: '60%',
+    marginTop: Platform.OS === 'ios' ? '5%' : 0,
   },
   figures: {
     backgroundColor: color.white,

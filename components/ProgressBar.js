@@ -14,10 +14,6 @@ export default function Progress({ now, max, height }) {
             useNativeDriver: true,
         }).start();
     }, [])
-    useEffect(() => {
-        reactive.setValue(-width + width * now / max);
-
-    }, [now, width])
 
     return (
         <View

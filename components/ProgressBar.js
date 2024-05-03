@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Animated, View } from 'react-native';
 import { color } from '../constants/color';
 
@@ -6,14 +6,6 @@ export default function Progress({ now, max, height }) {
     const [width, SetWidth] = useState(0);
     const animatedValue = useRef(new Animated.Value(-1000)).current;
     const reactive = useRef(new Animated.Value(-1000)).current;
-
-    useEffect(() => {
-        Animated.timing(animatedValue, {
-            toValue: reactive,
-            duration: 300,
-            useNativeDriver: true,
-        }).start();
-    }, [])
 
     return (
         <View
@@ -24,6 +16,7 @@ export default function Progress({ now, max, height }) {
             }}
             style={{
                 height,
+                width,
                 backgroundColor: color.disabledbtn,
                 borderRadius: height,
                 overflow: 'hidden',
